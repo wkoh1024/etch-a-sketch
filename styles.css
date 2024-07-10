@@ -1,3 +1,18 @@
+html, body {
+    height: 100%;
+    margin: 0px;
+}
+
 #main-container {
     display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.pixels {
+    flex: 1 0 6.25%;
+}
+
+.pixels:hover {
+    background-color: black;
 }
