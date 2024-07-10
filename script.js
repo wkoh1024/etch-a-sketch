@@ -6,3 +6,17 @@ for (let i = 0; i < 256; i++) {
     addedDiv.classList.add("pixels")
     mainContainer.append(addedDiv);
 }
+
+const turnColor = (event) => {
+    event.target.style.backgroundColor = 'black';
+};
+
+let pixels = document.querySelectorAll(".pixels");
+pixels.forEach((pixel) => {
+    pixel.addEventListener("mouseover", turnColor)
+});
+
+
+// function hoveredPixel = () => {
+
+// }

@@ -12,7 +12,3 @@ html, body {
 .pixels {
     flex: 1 0 6.25%;
 }
-
-.pixels:hover {
-    background-color: black;
-}
