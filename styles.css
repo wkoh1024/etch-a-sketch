@@ -10,5 +10,6 @@ html, body {
 }
 
 .pixels {
-    flex: 1 0 6.25%;
+    flex: 1 0;
+    flex-basis: 6.25%;
 }
