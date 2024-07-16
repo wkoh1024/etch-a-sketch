@@ -11,10 +11,20 @@ const createBoard = (sideLength) => {
     selectAndColorPixels();
 };
 
+// makes pixels turn color upon visiting, does not stack over visited pixels
+const changeColor = (event) => {
+    if (!event.target.classList.contains("visited")) {
+        event.target.style.backgroundColor = randomColorAsString();
+        event.target.classList.add("visited");
+    };
+};
+
+
+// reselects pixels, enables them to change color, and returns them
 const selectAndColorPixels = () => {
     var pixels = document.querySelectorAll(".pixels");
     pixels.forEach((pixel) => {
-        pixel.addEventListener("mouseover", turnColor);
+        pixel.addEventListener("mouseover", changeColor);
     });
     return pixels;
 };
@@ -22,22 +32,13 @@ const selectAndColorPixels = () => {
 // wipes page of all pixels
 const clearBoard = () => {
     mainContainer.replaceChildren();
-    console.log("Board cleared!");
 };
 
 const randomColorAsString = () => {
     return "#" + Math.floor(Math.random()*16777215).toString(16);
 };
 
-// makes pixels turn color upon visiting, does not stack over visited pixels
-const turnColor = (event) => {
-    if (!event.target.classList.contains("visited")) {
-        event.target.style.backgroundColor = randomColorAsString();
-        event.target.classList.add("visited");
-    };
-};
-
-const promptSideLength = () => {
+const getSideLength = () => {
     let sideLength = prompt("Enter new numbers of sqaures per side");
     while (sideLength > 100) {
         sideLength = prompt("Too large! Enter value less than 100.")
@@ -46,7 +47,7 @@ const promptSideLength = () => {
 };
 
 const changeDim = () => {
-    let newSideLength = promptSideLength();
+    let newSideLength = getSideLength();
     clearBoard();
     let newSideLengthFlexBasisAsString = () => {
         let flexBasisValue = 100 / newSideLength;
