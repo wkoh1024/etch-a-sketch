@@ -7,16 +7,22 @@ const createBoard = (sideLength) => {
         let addedDiv = document.createElement("div");
         addedDiv.classList.add("pixels")
         mainContainer.append(addedDiv);
-    }
+    };
     selectAndColorPixels();
 };
 
 // makes pixels turn color upon visiting, does not stack over visited pixels
 const changeColor = (event) => {
     if (!event.target.classList.contains("visited")) {
+        event.target.style.opacity = "0.1";
         event.target.style.backgroundColor = randomColorAsString();
         event.target.classList.add("visited");
-    };
+    }
+    else if (event.target.style.opacity != "1") {
+        let currentOpacity = Number(event.target.style.opacity);
+        currentOpacity += 0.1;
+        event.target.style.opacity = String(currentOpacity);
+    }
 };
 
 
